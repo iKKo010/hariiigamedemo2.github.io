@@ -1,0 +1,13 @@
+{
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                {
+                    "key": "Access-Control-Allow-Origin",
+                    "value": "https://ikko010.github.io/hariiigamedemo2.github.io"
+                }
+            ]
+        }
+    ]
+}
