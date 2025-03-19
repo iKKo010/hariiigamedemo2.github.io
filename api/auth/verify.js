@@ -1,8 +1,20 @@
 export default async function handler(req, res) {
-  // 允许CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // 允许的域名列表
+  const allowedOrigins = [
+    'https://ikko010.github.io',
+    'https://hariiigamedemo2-github-io.vercel.app'
+  ];
+
+  const origin = req.headers.origin;
+  
+  // 设置动态CORS
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Vary', 'Origin'); // 重要：避免CDN缓存CORS头
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
